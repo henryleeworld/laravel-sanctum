@@ -13,10 +13,14 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'App\Http\Controllers\Api\V1'], function () {
+	// Public routes
+    Route::post('/login', 'LoginController@login');
+    Route::post('/register', 'RegisterController@register');
 
-Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1'], function () {
-    // Users
-    Route::post('/login', 'UserController@login')->name('login');
-    Route::middleware('auth:sanctum')->group( function () {
+    // Protected routes
+    Route::group(['middleware' => ['auth:sanctum']], function () {
+        Route::post('/logout', 'LoginController@logout');
+        Route::resource('/tasks', 'TasksController');
     });
 });
