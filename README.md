@@ -1,4 +1,4 @@
-# Laravel 9 密室
+# Laravel 10 密室
 
 密室（Sanctum）為單一頁面應用程式（SPA）、行動應用程式和簡單的、基於權杖的 API（應用程式介面）提供輕量級身份驗證系統。密室允許應用程式的每個用戶為他們的帳戶生成多個 API 權杖。這些權杖可能被授予指定允許權杖執行哪些操作的能力／範圍。
 
@@ -12,7 +12,7 @@ $ git clone
 ```sh
 $ composer install
 ```
-- 產⽣ Laravel 要使用的一組 32 字元長度的隨機字串 APP_KEY 並存在 .env 內。
+- 產生 Laravel 要使用的一組 32 字元長度的隨機字串 APP_KEY 並存在 .env 內。
 ```sh
 $ php artisan key:generate
 ```
@@ -26,8 +26,8 @@ $ php artisan migrate --seed
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/tAy3Pxs.png)
+![](https://i.imgur.com/hVTdj2d.png)
 > 輸入錯誤的密碼，必須進行確認
 
-![](https://i.imgur.com/UVvxc7P.png)
+![](https://i.imgur.com/bSWVp5c.png)
 > 可經由登入取得，每當應用程式呼叫 API 以代表用戶讀取、修改或寫入特定用戶的資料時，就會需要這種類型的存取權杖
