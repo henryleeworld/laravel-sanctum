@@ -7,7 +7,6 @@ use App\Http\Requests\Api\V1\StoreUserRequest;
 use App\Http\Traits\HttpResponsesTrait;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 /**
  * @group Auth endpoints
@@ -23,7 +22,7 @@ class RegisterController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'password' => $request->password,
         ]);
 
         return $this->success([
