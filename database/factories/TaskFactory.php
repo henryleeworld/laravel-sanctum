@@ -15,13 +15,13 @@ class TaskFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         return [
             'user_id' => User::all()->random()->id,
-            'name' => $this->faker->unique()->sentence(),
-            'description' =>  $this->faker->text(),
-            'priority' => $this->faker->randomElement(['low', 'medium', 'high'])
+            'name' => fake()->unique()->sentence(),
+            'description' =>  fake()->text(),
+            'priority' => fake()->randomElement(['low', 'medium', 'high'])
         ];
     }
 }

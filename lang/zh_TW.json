@@ -1,0 +1,8 @@
+{
+    "Administrator": "系統管理員",
+    "Credentials do not match": "登入資料不符合",
+    "Error has occurred...": "發生錯誤...",
+    "Request was successful.": "要求成功。",
+    "You are not authorized to make this request": "您沒有權限執行此要求。",
+    "You have succesfully been logged out and your token has been removed": "您已成功登出並且您的權杖 (token) 已被刪除"
+}
