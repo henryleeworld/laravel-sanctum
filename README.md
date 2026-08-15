@@ -1,4 +1,4 @@
-# Laravel 11 密室
+# Laravel 12 密室
 
 密室（Sanctum）為單一頁面應用程式（SPA）、行動應用程式和簡單的、基於權杖的 API（應用程式介面）提供輕量級身份驗證系統。密室允許應用程式的每個用戶為他們的帳號生成多個 API 權杖。這些權杖可能被授予指定允許權杖執行哪些操作的能力／範圍。
 
@@ -16,18 +16,28 @@ $ composer install
 ```sh
 $ php artisan key:generate
 ```
+- 運行單元測試和功能測試。大多數的單元測試可能只專注於單一個方法，功能測試則可以測試大部分的程式碼，包含一些物件如何進行互動，甚至是完整的 HTTP 請求到一個 JSON 端點。
+```sh
+$ php artisan test
+```
 - 執行 __Artisan__ 指令的 __migrate__ 來執行所有未完成的遷移，並執行資料庫填充（如果要測試的話）。
 ```sh
 $ php artisan migrate --seed
 ```
 - 在瀏覽器中輸入已定義的路由 URL 來訪問，例如：http://127.0.0.1:8000。
-- 你可以經由 `/api/v1/login/` 來進行登入。
+- 你可以經由 `/api/login/` 來進行登入。
 
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/zbqiHeY.png)
-> 輸入錯誤的密碼，必須進行確認
+![](https://i.imgur.com/lilgjVW.png)
+> 確保每次測試完都可以成功
 
-![](https://i.imgur.com/5BcDXAW.png)
-> 可經由登入取得，每當應用程式呼叫 API 以代表用戶讀取、修改或寫入特定用戶的資料時，就會需要這種類型的存取權杖
+![](https://i.imgur.com/KVW1e9Z.png)
+> 傳送 HTML 表單資料使用建立使用者來做登入
+
+![](https://i.imgur.com/8pqVVFX.png)
+> 在 Authorization 請求標頭中指定存取權杖作為憑證令牌來做訂單查詢
+
+![](https://i.imgur.com/QnPkRrw.png)
+> 在 Authorization 請求標頭中指定存取權杖作為憑證令牌來做登出

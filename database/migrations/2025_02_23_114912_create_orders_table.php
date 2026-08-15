@@ -10,17 +10,14 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-{
-        Schema::create('tasks', function (Blueprint $table) {
+    {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->foreignId('user_id')->constrained();
             $table->string('name');
-            $table->string('description');
-            $table->string('priority')->default('normal');
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
+            $table->text('description')->nullable();
+            $table->date('date')->default(now());
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tasks');
+        Schema::dropIfExists('orders');
     }
 };

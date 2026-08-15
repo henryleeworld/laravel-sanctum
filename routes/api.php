@@ -1,16 +1,21 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['namespace' => 'App\Http\Controllers\Api\V1'], function () {
-	// Public routes
-    Route::post('/login', 'LoginController@login');
-    Route::post('/register', 'RegisterController@register');
+Route::get('/', function () {
+    return response()->json([
+        'message' => __('Order Stock Management API!'),
+        'status' => 200,
+    ], 200);
+});
 
-    // Protected routes
-    Route::group(['middleware' => ['auth:sanctum']], function () {
-        Route::post('/logout', 'LoginController@logout');
-        Route::resource('/tasks', 'TasksController');
-    });
+Route::post('/login', [AuthController::class, 'login']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout']);
+});
+
+Route::prefix('v1')->group(function () {
+    require __DIR__.'/api_v1.php';
 });
