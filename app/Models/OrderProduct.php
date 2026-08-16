@@ -2,18 +2,14 @@
 
 namespace App\Models;
 
+use Database\Factories\OrderProductFactory;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+#[Fillable(['order_id', 'product_id', 'quantity', 'price'])]
 class OrderProduct extends Model
 {
-    /** @use HasFactory<\Database\Factories\OrderProductFactory> */
+    /** @use HasFactory<OrderProductFactory> */
     use HasFactory;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
-    protected $fillable = ['order_id', 'product_id', 'quantity', 'price'];
 }
